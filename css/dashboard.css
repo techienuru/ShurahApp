@@ -1,0 +1,20 @@
+/* Add an acitve class to the active dropdown button */
+.active{
+    background-color: #c640eb;
+    color: white;
+}
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of thr dropdown content */
+.dropdown-container{
+    padding-right: 13px;
+    padding-left: 13px;
+    font-size: 18px;
+    color: #2e2d2e;
+    text-transform: uppercase;
+    display: none;
+}
+/* Optional: Style the caret down icon*/
+.fa-caret-down{
+    padding-right: 1px;
+    margin-top: 6px;
+    margin-left: 6px;
+}
