@@ -3,7 +3,9 @@
 
     $current_time = time();
     $time_string = date("YmdHis", $current_time);
+
     include("functions/form_functions.php");
+    
     $date = date("d-m-Y");
     $date1 = date("Ymd");
     $user = $_SESSION['admin'];
