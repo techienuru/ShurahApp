@@ -85,9 +85,9 @@ $end_date = $_GET['end_date'];
                                 </tr>
                             </thead>
                             <?php
-$client_id = $_GET['client_id'];
+                            $client_id = $_GET['client_id'];
 
-                            $query = mysqli_query($db_connect, "SELECT so.invoice,so.name, SUM(COALESCE(so.qty, 0)) AS qty, MAX(so.price) AS price, MAX(so.discount) AS discount, SUM(COALESCE(so.amount, 0)) AS amount FROM sales_order so WHERE so.invoice IN (SELECT cl.invoice FROM client_ledger cl WHERE cl.client_id = '$client_id' AND cl.date BETWEEN '$start_date' AND '$end_date') GROUP BY so.name ORDER BY so.category,so.name ASC"); 
+                            $query = mysqli_query($db_connect, "SELECT so.invoice,so.name, SUM(COALESCE(so.qty, 0)) AS qty, MAX(so.price) AS price, MAX(so.discount) AS discount, SUM(COALESCE(so.amount, 0)) AS amount FROM sales_order so WHERE so.invoice IN (SELECT cl.invoice FROM client_ledger cl WHERE cl.client_id = '$client_id' AND cl.date BETWEEN '$start_date' AND '$end_date') GROUP BY so.name ORDER BY so.category,so.name ASC");
                             while ($row = mysqli_fetch_array($query)) {
                                 extract($row);
                                 echo "<tbody>";
@@ -113,6 +113,14 @@ $client_id = $_GET['client_id'];
                                     <th>Price</th>
                                     <th>Discount</th>
                                     <th>Amount</th>
+                                </tr>
+                                <tr style='font-weight:bold; background:#f5f5f5;'>
+                                    <?php
+                                    echo "<td colspan='6' align='right'>Total</td>";
+                                    echo "
+                                <td>₦ " . number_format($totalAmount, 2) . "</td>
+                                ";
+                                    ?>
                                 </tr>
                             </thead>
                         </table>
