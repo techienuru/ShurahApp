@@ -5,6 +5,7 @@
         $rnd = createthree();
         $date = date('Y-m-d');
 
+        $get_client = mysqli_query($db_connect,"SELECT * FROM clients ORDER BY name ASC") or die(mysqli_error($db_connect));
     ?>
     <div class="team_section layout_padding">
         <div class="container">
@@ -40,7 +41,12 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <b><label>Client ID :</label></b>
-                                <input class="form-control" type="text" name="client_id" placeholder="Enter Client ID" required>
+                                <select class="form-control" name="client_id" id="category_id" required>
+                                    <option value="">--- Select Client ID ---</option>
+                                    <?php while($row = mysqli_fetch_assoc($get_client)): ?>
+                                        <option value="<?php echo $row['client_id']; ?>"><?php echo $row['client_id']; ?> - <?php echo $row['name']; ?></option>
+                                    <?php endwhile; ?>
+                                </select>
                             </div>
                         </div>
                         <div class="col-4">
