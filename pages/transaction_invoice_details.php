@@ -30,40 +30,25 @@ $end_date = $_GET['end_date'];
                     <div class="col-5">
                         <div class="form-group">
                             <b><label>Total Debit</label></b>
-                            <?php
-                            if ($debit = 0) { ?>
-                                <label><?php echo 'NIL '; ?></label>
-
-                            <?php } else { ?>
-                                <label><?php echo "₦ " . number_format($debit, 2); ?></label>
-                            <?php }
-                            ?>
+                            <label>
+                                <?php echo $debit = 0 ? "NIL" : "₦" . number_format($debit, 2); ?>
+                            </label>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="form-group">
                             <b><label>Total Credit</label></b>
-                            <?php
-                            if ($credit = 0) { ?>
-                                <label><?php echo 'NIL '; ?></label>
-
-                            <?php } else { ?>
-                                <label><?php echo "₦ " . number_format($credit, 2); ?></label>
-                            <?php }
-                            ?>
+                            <label>
+                                <?php echo $credit = 0 ? "NIL" : "₦" . number_format($credit, 2); ?>
+                            </label>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="form-group">
                             <b><label>Balance</label></b>
-                            <?php
-                            if ($balance = 0) { ?>
-                                <label><?php echo 'NIL '; ?></label>
-
-                            <?php } else { ?>
-                                <label><?php echo "₦ " . number_format(abs($balance)); ?></label>
-                            <?php }
-                            ?>
+                            <label>
+                                <?php echo $balance = 0 ? "NIL" : "₦" . number_format(abs($balance), 2); ?>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -113,14 +98,6 @@ $end_date = $_GET['end_date'];
                                     <th>Price</th>
                                     <th>Discount</th>
                                     <th>Amount</th>
-                                </tr>
-                                <tr style='font-weight:bold; background:#f5f5f5;'>
-                                    <?php
-                                    echo "<td colspan='6' align='right'>Total</td>";
-                                    echo "
-                                <td>₦ " . number_format($totalAmount, 2) . "</td>
-                                ";
-                                    ?>
                                 </tr>
                             </thead>
                         </table>
